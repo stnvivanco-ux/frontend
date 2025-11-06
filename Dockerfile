@@ -1,5 +1,10 @@
 FROM nginx:alpine
 
+# Preparamos los directorios que Nginx necesita para escribir
+RUN mkdir -p /var/cache/nginx/client_temp \
+    && chgrp -R 0 /var/cache/nginx /var/run /var/log/nginx \
+    && chmod -R g+rwx /var/cache/nginx /var/run /var/log/nginx
+
 # Copiamos nuestra configuración para que Nginx escuche en el puerto 3000
 COPY default.conf /etc/nginx/conf.d/default.conf
 
