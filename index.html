@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto OpenShift - Frontend</title>
+</head>
+<body>
+  <h1>Frontend del Reto OpenShift</h1>
+  <p>Esta página está servida desde la imagen Docker <strong>savivancofi/frontend:v1</strong>.</p>
+
+  <h2>Mensaje desde el backend (y base de datos)</h2>
+  <p id="mensaje">Todavía no hemos llamado al backend...</p>
+
+  <script>
+    // 👇 Más adelante ajustaremos esta URL al Route del backend-api.
+    // Por ahora es solo para dejar listo el código.
+    fetch('http://backend-api-svc:8080/mensaje')
+      .then(res => res.json())
+      .then(data => {
+        // Esperamos algo como { "texto": "hola desde la base" }
+        document.getElementById('mensaje').innerText = data.texto;
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('mensaje').innerText =
+          'No se pudo obtener el mensaje del backend (aún no está listo).';
+      });
+  </script>
+</body>
+</html>
