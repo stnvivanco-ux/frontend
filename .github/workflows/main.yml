@@ -61,4 +61,4 @@ jobs:
             oci://registry-1.docker.io/savivancofi/mi-chart \
             --version 0.1.0 \
             --namespace ${{ secrets.OPENSHIFT_NAMESPACE }} \
-            --values helm/values.yml
+            --values helm/values.yaml
