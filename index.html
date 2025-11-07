@@ -1,12 +1,14 @@
 <script>
-  fetch('/api/mensaje')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('mensaje').innerText = data.texto;
-    })
-    .catch(err => {
-      console.error(err);
-      document.getElementById('mensaje').innerText =
-        'No se pudo obtener el mensaje del backend (aún no está listo).';
-    });
+async function cargarMensaje() {
+  try {
+    const resp = await fetch('/mensaje');  // 👈 importante: ruta relativa
+    const data = await resp.json();
+    document.getElementById('mensaje-backend').innerText = data.texto;
+  } catch (e) {
+    document.getElementById('mensaje-backend').innerText =
+      'No se pudo obtener el mensaje del backend (aún no está listo).';
+  }
+}
+
+cargarMensaje();
 </script>
