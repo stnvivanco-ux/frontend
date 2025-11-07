@@ -1,14 +1,30 @@
-<script>
-async function cargarMensaje() {
-  try {
-    const resp = await fetch('/mensaje');  // 👈 importante: ruta relativa
-    const data = await resp.json();
-    document.getElementById('mensaje-backend').innerText = data.texto;
-  } catch (e) {
-    document.getElementById('mensaje-backend').innerText =
-      'No se pudo obtener el mensaje del backend (aún no está listo).';
-  }
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Frontend del Reto OpenShift</title>
+</head>
+<body>
+  <h1>Frontend del Reto OpenShift</h1>
+  <p>Esta página está servida desde la imagen Docker <strong>savivancofi/frontend:v2</strong>.</p>
 
-cargarMensaje();
-</script>
+  <h2>Mensaje desde el backend (y base de datos)</h2>
+  <p id="mensaje-backend">Cargando mensaje...</p>
+
+  <script>
+    async function cargarMensaje() {
+      try {
+        // 👇 Llamamos al proxy de Nginx, que ya sabemos que funciona
+        const resp = await fetch('/mensaje');
+        const data = await resp.json();
+        document.getElementById('mensaje-backend').innerText = data.texto;
+      } catch (e) {
+        document.getElementById('mensaje-backend').innerText =
+          'No se pudo obtener el mensaje del backend (aún no está listo).';
+      }
+    }
+
+    cargarMensaje();
+  </script>
+</body>
+</html>
