@@ -15,7 +15,7 @@ jobs:
 
       - name: Set image tag
         id: vars
-        run: echo "TAG=v2" >> $GITHUB_ENV
+        run: echo "TAG=v3" >> $GITHUB_ENV
         # 👆 Usa aquí la versión que tú definas (por ejemplo "v2", "v3"...)
 
       # 🔹 1️⃣ Login a Docker Hub

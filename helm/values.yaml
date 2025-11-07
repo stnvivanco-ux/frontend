@@ -4,7 +4,7 @@ app:
   name: frontend
   role: frontend
   image: savivancofi/frontend
-  tag: v2
+  tag: v3
   replicas: 1
   containerPort: 3000
   servicePort: 80
