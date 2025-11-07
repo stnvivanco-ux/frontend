@@ -1,14 +1,14 @@
 namespace: stnvivanco92-dev
 
 app:
-  name: frontend               # se usará en nombres: frontend-deployment, frontend-svc, frontend-route
+  name: frontend
   role: frontend
-  image: savivancofi/frontend  # repo de Docker Hub
-  tag: v2                      # la tag que creaste
+  image: savivancofi/frontend
+  tag: v2
   replicas: 1
-  containerPort: 3000          # puerto dentro del contenedor (nginx)
-  servicePort: 80              # puerto del Service
-  createRoute: true            # frontend SÍ expone Route
+  containerPort: 3000
+  servicePort: 80
+  createRoute: true
 
 env:
   - name: ROLE
